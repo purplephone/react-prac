@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Content from './Content';
+import Con_But from './Con_But';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state={
+    inform:[
+    ]
+  }
+  Change = input => this.setState(prev => {
+      prev.inform.push({text:input});
+      return {inform: prev.inform};
+    });
+
+  render(){
+    return(
+      <div>
+        <Content Change={this.Change}/>
+        <Con_But tt={this.state.inform}/>
+      </div>
+    );
+  }
 }
 
 export default App;
